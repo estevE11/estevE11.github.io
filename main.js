@@ -268,7 +268,9 @@ function init() {
     canvas.width = 500;
     canvas.height = 700;
     ctx = canvas.getContext('2d');
-    document.body.appendChild(canvas);
+    let center = document.createElement("center");
+    center.appendChild(canvas);
+    document.body.appendChild(center);
 
     document.addEventListener('keydown', key_down);
 
