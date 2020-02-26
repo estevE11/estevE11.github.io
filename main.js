@@ -134,11 +134,8 @@ piece = {
 
     on_create: function() {
         this.id = this.next_id;
-        while(this.next_id == this.last_id)
+        while(this.next_id == this.id)
             this.next_id = Math.floor(Math.random() * 7);
-        console.log(this.id);
-        console.log(this.next_id);
-        console.log("------------");
         this.mat = JSON.parse(JSON.stringify(pieces[this.id]));
         this.y = 0;
         this.x = Math.floor(Math.random()*6);
@@ -158,15 +155,15 @@ piece = {
     },
 
     render_next: function(x, y) {
-        console.log(this.next_id);
-        this.render_mat(this.next_id, pieces[this.next_id], x, y);
+        let m = pieces[this.next_id];
+        this.render_mat(this.next_id, m, x, y);
     },
 
-    render_mat: function(id, mat, x, y) {
-        let w = mat.length;
+    render_mat: function(id, m, x, y) {
+        let w = m.length;
         for(yy = 0; yy < w; yy++) {
             for(xx = 0; xx < w; xx++) {
-                if(this.mat[yy][xx] === 1) {
+                if(m[yy][xx] === 1) {
                     render_tile((x + xx)*this.w, (y + yy)*this.w, id+1);
                 }
             }
